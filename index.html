@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WiFi Gratis — APK Premium</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: linear-gradient(135deg, #1a73e8 0%, #00c6ff 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+    .caja {
+      background: white;
+      padding: 40px 30px;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.2);
+      width: 100%;
+      max-width: 420px;
+      text-align: center;
+    }
+    .icono {
+      font-size: 50px;
+      margin-bottom: 10px;
+    }
+    h1 {
+      color: #1a73e8;
+      font-size: 22px;
+      margin-bottom: 5px;
+    }
+    h2 {
+      color: #333;
+      font-size: 18px;
+      margin-bottom: 25px;
+      font-weight: 600;
+    }
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 8px 0;
+      border: 2px solid #e0e0e0;
+      border-radius: 10px;
+      font-size: 16px;
+      transition: 0.3s;
+    }
+    input:focus {
+      outline: none;
+      border-color: #1a73e8;
+    }
+    button {
+      width: 100%;
+      padding: 15px;
+      background: #28c746;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+    button:hover {
+      background: #22b03d;
+      transform: scale(1.02);
+    }
+    .mensaje-error {
+      color: #e53935;
+      margin-top: 15px;
+      display: none;
+      font-weight: bold;
+    }
+    .pasos {
+      background: #f0f7ff;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      text-align: left;
+    }
+    .pasos h3 {
+      color: #0d47a1;
+      margin-bottom: 15px;
+      text-align: center;
+    }
+    .pasos ol {
+      padding-left: 25px;
+      line-height: 1.8;
+      color: #333;
+    }
+    .pasos li {
+      margin: 10px 0;
+    }
+    .enlace-drive {
+      display: block;
+      text-align: center;
+      background: #1a73e8;
+      color: white;
+      padding: 14px;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: bold;
+      font-size: 16px;
+      margin-top: 10px;
+      transition: 0.3s;
+    }
+    .enlace-drive:hover {
+      background: #1557b0;
+    }
+    .volver {
+      display: block;
+      text-align: center;
+      margin-top: 25px;
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+    }
+    .volver:hover {
+      color: #1a73e8;
+    }
+    .aviso {
+      margin-top: 15px;
+      font-size: 13px;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- INICIO DE SESIÓN -->
+  <div class="caja" id="pantallaLogin">
+    <div class="icono">📶</div>
+    <h1>WiFi Gratis</h1>
+    <h2>APK Premium</h2>
+
+    <input type="text" id="usuario" placeholder="Usuario">
+    <input type="password" id="clave" placeholder="Contraseña">
+
+    <button onclick="ingresar()">Iniciar Sesión</button>
+
+    <p class="mensaje-error" id="errorUsuario">❌ Usuario incorrecto</p>
+    <p class="mensaje-error" id="errorClave">❌ Contraseña incorrecta</p>
+  </div>
+
+  <!-- DESCARGA -->
+  <div class="caja" id="pantallaDescarga" style="display: none;">
+    <div class="icono">✅</div>
+    <h2>¡Acceso Autorizado!</h2>
+    
+    <div class="pasos">
+      <h3>📋 Pasos para descargar e instalar</h3>
+      <ol>
+        <li>Haz clic en el botón de abajo</li>
+        <li>Se abrirá Google Drive → presiona <strong>Descargar</strong> ⬇️</li>
+        <li>Abre el archivo <strong>.apk</strong> en tu celular</li>
+        <li>Si te pide → activa "Instalar de fuentes desconocidas"</li>
+        <li>¡Listo! Disfruta ✅</li>
+      </ol>
+    </div>
+
+    <a class="enlace-drive" 
+       href="https://drive.google.com/uc?id=1dTIqKQYw9PenYq-JBXchhQXbFWmuxUO1&export=download" 
+       target="_blank">
+      📥 Descargar APK Gratis
+    </a>
+
+    <p class="aviso">💡 Si no descarga, verifica que el archivo en Google Drive esté en "Cualquiera con el enlace"</p>
+
+    <a href="#" class="volver" onclick="volverLogin(); return false;">← Volver al inicio</a>
+  </div>
+
+<script>
+  const USUARIO_CORRECTO = "WIFI HACKEADO";
+  const CLAVE_CORRECTA   = "WIFI.ILIMITADO";
+
+  function ingresar() {
+    let u = document.getElementById("usuario").value.trim();
+    let c = document.getElementById("clave").value.trim();
+
+    // Ocultar mensajes anteriores
+    document.getElementById("errorUsuario").style.display = "none";
+    document.getElementById("errorClave").style.display = "none";
+
+    if (u !== USUARIO_CORRECTO) {
+      document.getElementById("errorUsuario").style.display = "block";
+      return;
+    }
+    if (c !== CLAVE_CORRECTA) {
+      document.getElementById("errorClave").style.display = "block";
+      return;
+    }
+
+    // Todo correcto → mostrar descarga
+    document.getElementById("pantallaLogin").style.display = "none";
+    document.getElementById("pantallaDescarga").style.display = "block";
+  }
+
+  function volverLogin() {
+    document.getElementById("pantallaDescarga").style.display = "none";
+    document.getElementById("pantallaLogin").style.display = "block";
+    document.getElementById("errorUsuario").style.display = "none";
+    document.getElementById("errorClave").style.display = "none";
+    document.getElementById("usuario").value = "";
+    document.getElementById("clave").value = "";
+  }
+</script>
+
+</body>
+</html>
